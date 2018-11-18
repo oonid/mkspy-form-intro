@@ -1,0 +1,35 @@
+<html>
+<body>
+<!-- form post to current page, no need to declare action= -->
+<form method="post">
+    <p>Fried Data</p>
+    <label for="{{ form.name.auto_id }}">Name: </label>
+    {{ form.name }}
+    <br/>
+    <label for="{{ form.age.auto_id }}">Age: </label>
+    {{ form.age }}
+    <br/>
+    <label for="{{ form.sex.auto_id }}">Sex: </label>
+    {{ form.sex }}
+    <br/>
+    <input type="submit" value="Submit">
+</form>
+<!-- display messages from django views -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<!-- display friends from database -->
+{% if friends %}
+    <p>Friend List</p>
+    <ul class="friends">
+        {% for friend in friends %}
+            <li>{{ friend }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>
